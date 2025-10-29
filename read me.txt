@@ -1,0 +1,9 @@
+Do file Streamlit cần các thư viện bổ sung như pandas và json, bạn cần đảm bảo môi trường đã cài đặt chúng:
+1. .venv\Scripts\activate
+pip install streamlit python-docx pandas openpyxl
+pip install streamlit python-docx pandas openpyxl reportlab xlsxwriter
+//pip install --upgrade streamlit python-docx pandas xlsxwriter
+pip install xlsxwriter
+
+2. pip install streamlit
+3. streamlit run app.py     python -m streamlit run app.py
