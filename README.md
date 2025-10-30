@@ -1,2 +1,2 @@
-# Ontap-tracnghiem-giuaki1-MonDiali7
-Ôn tập kiến thức trọng tâm môn Địa lí 7 giữa học kì 1
+# Tracnghiem-Tinhoc7-KimChi
+Hệ thống thi trắc nghiệm trực tuyến dùng Streamlit

@@ -6,24 +6,45 @@ import re, json, pandas as pd, os, random, time
 from io import BytesIO
 import base64
 
-# ====== Cấu hình cơ bản (GIỮ NGUYÊN) ======
+# === THÊM PAGE CONFIG ĐỂ TỐI ƯU HIỂN THỊ ===
+st.set_page_config(layout="wide", page_title="MyHoaQuiz", initial_sidebar_state="expanded") 
+# ==========================================
+
+# ====== Cấu hình cơ bản ======
 QUIZ_FILE = "questions.json"
 SCORES_FILE = "scores.xlsx"
 ADMIN_PASSWORD = "admin123"
 EXPECTED_COLUMNS = ["Tên Học Sinh", "Lớp", "Điểm", "Tổng Số Câu", "Thời Gian Nộp Bài"]
 DEFAULT_TIME_LIMIT = 45
+LOGO_PATH = "LOGO.png" # Khai báo đường dẫn logo
 
-st.markdown(
-    """
-    <h2 style='text-align: center; font-weight: 800;'>
-        📝 TRẮC NGHIỆM – ĐỊA LÍ 7
-    </h2>
-    <h4 style='text-align: center; color: gray; font-weight: 700;'>
-        KIẾN THỨC TRỌNG TÂM GIỮA HỌC KÌ 1 NĂM HỌC 2025–2026
-    </h4>
-    """,
-    unsafe_allow_html=True
-)
+# Thêm logo và tiêu đề (KHU VỰC CHÍNH)
+# SỬA ĐỔI: Thay đổi tỉ lệ cột [5, 4, 1] để căn giữa nội dung ở col2
+col1, col2, col3 = st.columns([5, 4, 1])
+
+# Hiển thị Logo ở cột 3
+if os.path.exists(LOGO_PATH):
+    with col3:
+        # Logo được đặt ở cột 3
+        st.image(LOGO_PATH, width=100) 
+    
+# Tiêu đề ở cột 2
+with col2:
+    st.markdown(
+        """
+        <h1   style='text-align: center; font-weight: 800;'>   
+                    MyHoaQuiz
+        </h1>
+        <h2 style='text-align: center; font-weight: 800;'>    
+            📝TRẮC NGHIỆM – TIN HỌC 7
+        </h2>
+        <h6 style='text-align: center; color: gray; font-weight: 700; margin-top: -10px;'> 
+    KIẾN THỨC TRỌNG TÂM GIỮA HỌC KÌ 1 NĂM HỌC 2025–2026
+        </h6>
+        """,
+        unsafe_allow_html=True
+    )
+    
 # ====== Khởi tạo file bảng điểm (GIỮ NGUYÊN) ======
 def init_scores_file():
     if not os.path.exists(SCORES_FILE):
@@ -553,4 +574,8 @@ def main():
         admin_ui()
 
 if __name__ == "__main__":
+
     main()
+
+
+
